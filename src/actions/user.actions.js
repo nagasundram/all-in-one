@@ -18,10 +18,13 @@ function login(username, password) {
       user => {
         dispatch(success(user));
         history.push("/all-in-one");
+        dispatch(alertActions.show("Successfully logged In"));
+        setTimeout(() => dispatch(alertActions.clear()), 3000);
       },
       error => {
         dispatch(failure(error));
-        dispatch(alertActions.error(error));
+        dispatch(alertActions.show(error));
+        setTimeout(() => dispatch(alertActions.clear()), 3000);
       }
     );
   };
@@ -38,8 +41,10 @@ function login(username, password) {
 }
 
 function logout() {
-  userService.logout();
-  return {
-    type: userConstants.LOGOUT
+  return dispatch => {
+    userService.logout();
+    return {
+      type: userConstants.LOGOUT
+    };
   };
 }

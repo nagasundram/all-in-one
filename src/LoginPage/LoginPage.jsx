@@ -2,8 +2,61 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Fab from "@material-ui/core/Fab";
+import LockIcon from "@material-ui/icons/LockOutlined";
+import UnLockIcon from "@material-ui/icons/LockOpenOutlined";
+
+import green from "@material-ui/core/colors/green";
+
+import "../css/home.css";
 import { userActions } from "../actions";
 
+const styles = theme => ({
+  text: {
+    paddingTop: theme.spacing.unit * 2,
+    paddingLeft: theme.spacing.unit * 2,
+    paddingRight: theme.spacing.unit * 2
+  },
+  paper: {
+    paddingBottom: 50
+  },
+  list: {
+    marginBottom: theme.spacing.unit * 2
+  },
+  subHeader: {
+    backgroundColor: theme.palette.background.paper
+  },
+  appBar: {
+    top: "auto",
+    bottom: 0
+  },
+  toolbar: {
+    alignItems: "center",
+    justifyContent: "space-between"
+  },
+  fabButton: {
+    position: "absolute",
+    zIndex: 1,
+    top: -30,
+    left: 0,
+    right: 0,
+    margin: "0 auto"
+  },
+  buttonProgress: {
+    color: green[500],
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    marginLeft: -12,
+    marginTop: 10
+  }
+});
 class LoginPage extends React.Component {
   constructor(props) {
     super(props);
@@ -38,52 +91,46 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    const { loggingIn } = this.props;
+    const { loggingIn, classes } = this.props;
     const { username, password, submitted } = this.state;
     return (
-      <div className="col-md-6 col-md-offset-3">
-        <h2>Login</h2>
+      <div className="model">
         <form name="form" onSubmit={this.handleSubmit}>
-          <div
-            className={
-              "form-group" + (submitted && !username ? " has-error" : "")
-            }
-          >
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              className="form-control"
-              name="username"
-              value={username}
-              onChange={this.handleChange}
-            />
-            {submitted && !username && (
-              <div className="help-block">Username is required</div>
-            )}
-          </div>
-          <div
-            className={
-              "form-group" + (submitted && !password ? " has-error" : "")
-            }
-          >
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              value={password}
-              onChange={this.handleChange}
-            />
-            {submitted && !password && (
-              <div className="help-block">Password is required</div>
-            )}
-          </div>
-          <div className="form-group">
-            <button className="btn btn-primary">Login</button>
-            {loggingIn && (
-              <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-            )}
-          </div>
+          <Grid container justify="center" spacing={16}>
+            <Grid item>
+              <TextField
+                error={submitted && !username}
+                type="text"
+                label="email"
+                name="username"
+                value={username}
+                onChange={this.handleChange}
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                error={submitted && !password}
+                type="password"
+                label="password"
+                className="form-control"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+              />
+            </Grid>
+
+            <Grid item>
+              <Fab color="primary" type="submit">
+                {loggingIn ? <UnLockIcon /> : <LockIcon />}
+              </Fab>
+              {loggingIn && (
+                <CircularProgress
+                  size={24}
+                  className={classes.buttonProgress}
+                />
+              )}
+            </Grid>
+          </Grid>
         </form>
       </div>
     );
@@ -98,4 +145,5 @@ function mapStateToProps(state) {
 }
 
 const connectedLoginPage = connect(mapStateToProps)(LoginPage);
-export { connectedLoginPage as LoginPage };
+const withStyle = withStyles(styles)(connectedLoginPage);
+export { withStyle as LoginPage };
