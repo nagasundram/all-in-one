@@ -1,0 +1,15 @@
+{
+  "short_name": "Cinnamon Churro",
+  "name": "Cinnamon Churro",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "120x120, 144x144"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
