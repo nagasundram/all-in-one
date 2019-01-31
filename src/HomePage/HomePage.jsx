@@ -1,31 +1,19 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import config from "../config";
 
 import "../css/home.css";
 import Grid from "@material-ui/core/Grid";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import Paper from "@material-ui/core/Paper";
 import Fab from "@material-ui/core/Fab";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListSubheader from "@material-ui/core/ListSubheader";
-import Avatar from "@material-ui/core/Avatar";
-import MenuIcon from "@material-ui/icons/Menu";
-import AddIcon from "@material-ui/icons/Add";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
-import SearchIcon from "@material-ui/icons/Search";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import Zoom from "@material-ui/core/Zoom";
+import AddIcon from "@material-ui/icons/Add";
+
+import { Categories } from "../components";
 
 import { categoryActions } from "../actions";
 
@@ -90,24 +78,7 @@ class HomePage extends React.Component {
             spacing={16}
             className={classes.content}
           >
-            {categories.loading && <CircularProgress color="primary" />}
-            {categories.error && <span>ERROR: {categories.error}</span>}
-            {categories.items && (
-              <Grid container justify="center" spacing={8}>
-                {categories.items.map((category, index) => (
-                  <Grid key={category.id} item>
-                    <Zoom
-                      in={category.id > 0}
-                      {...(category.id > 0 ? { timeout: 1000 } : {})}
-                    >
-                      <Paper className={classes.paper} align="center">
-                        {category.name}
-                      </Paper>
-                    </Zoom>
-                  </Grid>
-                ))}
-              </Grid>
-            )}
+            <Categories />
           </Grid>
         </Grid>
         <AppBar position="fixed" color="primary" className={classes.appBar}>

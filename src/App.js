@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { Router, Route, HashRouter } from "react-router-dom";
+import React from "react";
+import { Router, Route } from "react-router-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import config from "./config";
 import { connect } from "react-redux";
 import { history } from "./helpers";
 import { alertActions } from "./actions";

@@ -1,6 +1,4 @@
-import config from "../config";
 import { userConstants } from "../constants";
-import { Router, Route, HashRouter } from "react-router-dom";
 import { userService } from "../services";
 import { alertActions } from "./";
 import { history } from "../helpers";
