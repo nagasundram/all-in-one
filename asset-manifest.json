@@ -1,7 +1,7 @@
 {
   "main.css": "/all-in-one/static/css/main.19225e29.chunk.css",
-  "main.js": "/all-in-one/static/js/main.55c84957.chunk.js",
-  "main.js.map": "/all-in-one/static/js/main.55c84957.chunk.js.map",
+  "main.js": "/all-in-one/static/js/main.8d62ca22.chunk.js",
+  "main.js.map": "/all-in-one/static/js/main.8d62ca22.chunk.js.map",
   "static/js/1.48b50bd7.chunk.js": "/all-in-one/static/js/1.48b50bd7.chunk.js",
   "static/js/1.48b50bd7.chunk.js.map": "/all-in-one/static/js/1.48b50bd7.chunk.js.map",
   "runtime~main.js": "/all-in-one/static/js/runtime~main.a6b87183.js",
@@ -9,6 +9,6 @@
   "static/media/icon.png": "/all-in-one/static/media/icon.84d44aff.png",
   "static/css/main.19225e29.chunk.css.map": "/all-in-one/static/css/main.19225e29.chunk.css.map",
   "index.html": "/all-in-one/index.html",
-  "precache-manifest.489d3b468223bc437080538dc968da27.js": "/all-in-one/precache-manifest.489d3b468223bc437080538dc968da27.js",
+  "precache-manifest.2c38c2873b1fc50b72df414ca4ea286f.js": "/all-in-one/precache-manifest.2c38c2873b1fc50b72df414ca4ea286f.js",
   "service-worker.js": "/all-in-one/service-worker.js"
 }
